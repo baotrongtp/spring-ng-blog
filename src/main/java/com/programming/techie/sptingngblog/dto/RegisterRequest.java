@@ -21,8 +21,8 @@ public class RegisterRequest {
     private void setEmail(String email) {
         this.email = email;
     }
-
-    private String getPassword() {
+//    CHANGE getPassword FUNCTION TO PUBLIC
+    public String getPassword() {
         return password;
     }
 

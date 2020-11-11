@@ -13,14 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-  @Autowired
+    @Autowired
     private AuthService authService;
 
-  @PostMapping("/signup")
-  public ResponseEntity signup(@RequestBody RegisterRequest registerRequest) {
-    authService.signup(registerRequest);
-    return new ResponseEntity(HttpStatus.OK);
-  }
+    @PostMapping("/signup")
+//    FIXED THIS FUNCTION
+    public ResponseEntity signup(@RequestBody RegisterRequest registerRequest) {
+        if (registerRequest.getUsername() == null || registerRequest.getEmail() == null || registerRequest.getPassword() == null) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } else {
+            authService.signup(registerRequest);
+            return new ResponseEntity(HttpStatus.OK);
+        }
+    }
 
 
 }

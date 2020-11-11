@@ -19,7 +19,10 @@ public class AuthService {
         User user = new User();
         user.setUserName(registerRequest.getUsername());
         user.setEmail(registerRequest.getEmail());
-        user.setPassword(registerRequest.getEmail());
-
+//        user.setPassword(registerRequest.getEmail());
+//        FIXED THIS LINE
+        user.setPassword(registerRequest.getPassword());
+//        THIS LINE USE TO SAVE OBJECT TO DATABASE
+        userRepository.save(user);
     }
 }
